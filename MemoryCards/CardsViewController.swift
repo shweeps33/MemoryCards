@@ -105,24 +105,27 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
                     cell.isFlipped = false
                     cell2.isFlipped = false
                 })
-                
-//                _ = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false) { (timer) in
-//                    UIView.transition(with: cell, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
-//                    UIView.transition(with: cell2, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
-//
-//                    cell.isFlipped = false
-//                    cell2.isFlipped = false
-//                }
             }
             firstCardSelected = false
         }
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8.0
+        return 4.0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 2.0
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if numberOfCards <= 12 {
+            return CGSize.init(width: self.view.frame.width/3-16, height: self.view.frame.width/3-16)
+        }
+        else if numberOfCards <= 24 {
+            return CGSize.init(width: self.view.frame.width/4-14, height: self.view.frame.width/4-14)
+        }
+        else {
+            return CGSize.init(width: self.view.frame.width/5-12, height: self.view.frame.width/5-12)
+        }
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

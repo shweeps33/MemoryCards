@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="l9M-2u-Z36">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,14 +18,14 @@
                         <viewControllerLayoutGuide type="bottom" id="67U-pS-BOr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AU-Cz-s6W">
-                                <rect key="frame" x="0.0" y="176" width="320" height="216"/>
+                                <rect key="frame" x="47" y="260" width="320" height="216"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1o-VK-zvW">
-                                <rect key="frame" x="135" y="507" width="50" height="41"/>
+                                <rect key="frame" x="182" y="675" width="50" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
@@ -33,7 +33,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please chose number of cards:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlm-uC-Wk4">
-                                <rect key="frame" x="42" y="129.5" width="236" height="21"/>
+                                <rect key="frame" x="89" y="213.66666666666666" width="236" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -69,23 +69,29 @@
                         <viewControllerLayoutGuide type="bottom" id="2Zp-NB-nUP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Sco-ao-AlJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hqo-Bv-YzM">
-                                <rect key="frame" x="20" y="26" width="58" height="21.5"/>
+                                <rect key="frame" x="20" y="72" width="58" height="21.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCO-8m-5lp">
+                                <rect key="frame" x="182.33333333333334" y="72" width="49.333333333333343" height="21.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgO-ss-KDa">
-                                <rect key="frame" x="189" y="26" width="11" height="21.5"/>
+                                <rect key="frame" x="236.33333333333334" y="72" width="11" height="21.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="n2G-Bq-meP">
-                                <rect key="frame" x="20" y="67.5" width="280" height="480.5"/>
+                                <rect key="frame" x="20" y="113.66666666666669" width="374" height="602.33333333333326"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mbd-FA-XrQ">
                                     <size key="itemSize" width="50" height="50"/>
@@ -117,24 +123,18 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCO-8m-5lp">
-                                <rect key="frame" x="135.5" y="26" width="49.5" height="21.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="n2G-Bq-meP" secondAttribute="trailing" constant="20" id="6yj-BO-WyG"/>
                             <constraint firstAttribute="bottom" secondItem="n2G-Bq-meP" secondAttribute="bottom" constant="20" id="8vH-0h-9Dx"/>
-                            <constraint firstItem="Hqo-Bv-YzM" firstAttribute="top" secondItem="Sco-ao-AlJ" secondAttribute="top" constant="26" id="IsI-Wp-FSu"/>
+                            <constraint firstItem="CgO-ss-KDa" firstAttribute="centerY" secondItem="LCO-8m-5lp" secondAttribute="centerY" id="FlQ-pr-ptT"/>
                             <constraint firstItem="CgO-ss-KDa" firstAttribute="leading" secondItem="LCO-8m-5lp" secondAttribute="trailing" constant="4" id="JIa-UU-6xP"/>
+                            <constraint firstItem="n2G-Bq-meP" firstAttribute="leading" secondItem="Sco-ao-AlJ" secondAttribute="leading" constant="20" id="U1V-Hq-3N3"/>
                             <constraint firstItem="n2G-Bq-meP" firstAttribute="top" secondItem="LCO-8m-5lp" secondAttribute="bottom" constant="20" id="a08-LV-ooK"/>
-                            <constraint firstItem="n2G-Bq-meP" firstAttribute="leading" secondItem="Sco-ao-AlJ" secondAttribute="leading" constant="20" id="am9-aQ-V39"/>
                             <constraint firstItem="Hqo-Bv-YzM" firstAttribute="leading" secondItem="Sco-ao-AlJ" secondAttribute="leading" constant="20" id="ckf-L0-4Dd"/>
-                            <constraint firstItem="LCO-8m-5lp" firstAttribute="top" secondItem="Sco-ao-AlJ" secondAttribute="top" constant="26" id="dIk-UH-VdF"/>
-                            <constraint firstItem="CgO-ss-KDa" firstAttribute="centerY" secondItem="LCO-8m-5lp" secondAttribute="centerY" id="fYY-DS-hnP"/>
+                            <constraint firstItem="LCO-8m-5lp" firstAttribute="top" secondItem="Sco-ao-AlJ" secondAttribute="top" constant="72" id="dIk-UH-VdF"/>
+                            <constraint firstItem="Hqo-Bv-YzM" firstAttribute="centerY" secondItem="LCO-8m-5lp" secondAttribute="centerY" id="fjz-Zk-7vg"/>
                             <constraint firstItem="LCO-8m-5lp" firstAttribute="centerX" secondItem="Sco-ao-AlJ" secondAttribute="centerX" id="jAi-vF-PKv"/>
                         </constraints>
                     </view>
@@ -147,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XdY-4W-RpD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1272.8" y="117.39130434782609"/>
+            <point key="canvasLocation" x="1271.25" y="117.25352112676056"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NDU-lv-iqD">
@@ -155,7 +155,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l9M-2u-Z36" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VoO-bf-ZnX">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
