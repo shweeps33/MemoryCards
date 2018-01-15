@@ -14,6 +14,7 @@ class CardsViewController: UIViewController {
     @IBOutlet weak var flipsLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    var xxxxx = 0
     var numberOfCards = Int()
     var nuuumber = 0
     var arrayOfNumbers = [Int]()
