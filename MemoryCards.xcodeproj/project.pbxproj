@@ -14,6 +14,14 @@
 		8433A2CB2004F499007AD790 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8433A2C92004F499007AD790 /* LaunchScreen.storyboard */; };
 		8433A2D320055F26007AD790 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433A2D220055F26007AD790 /* CardsViewController.swift */; };
 		8433A2D5200567DE007AD790 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433A2D4200567DE007AD790 /* CollectionViewCell.swift */; };
+		84C8C7E2200B8B5200572B0E /* RecordsDataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84C8C7E0200B8B5200572B0E /* RecordsDataBase.xcdatamodeld */; };
+		84C8C7E5200B8E1600572B0E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C8C7E4200B8DD800572B0E /* CoreData.framework */; };
+		84C8C808200B905100572B0E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8C807200B905100572B0E /* DataController.swift */; };
+		84C8C80C200BA51100572B0E /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8C80B200BA51100572B0E /* RecordsViewController.swift */; };
+		84C8C80F200BD73C00572B0E /* RecordObj+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8C80D200BD73C00572B0E /* RecordObj+CoreDataClass.swift */; };
+		84C8C810200BD73C00572B0E /* RecordObj+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8C80E200BD73C00572B0E /* RecordObj+CoreDataProperties.swift */; };
+		84DF371C200BE7400073BF19 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DF371B200BE7400073BF19 /* RecordTableViewCell.swift */; };
+		84DF371E200C10760073BF19 /* Functionality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DF371D200C10760073BF19 /* Functionality.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +34,14 @@
 		8433A2CC2004F499007AD790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8433A2D220055F26007AD790 /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		8433A2D4200567DE007AD790 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		84C8C7E1200B8B5200572B0E /* RecordsDataBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecordsDataBase.xcdatamodel; sourceTree = "<group>"; };
+		84C8C7E4200B8DD800572B0E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		84C8C807200B905100572B0E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		84C8C80B200BA51100572B0E /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
+		84C8C80D200BD73C00572B0E /* RecordObj+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RecordObj+CoreDataClass.swift"; path = "MemoryCards/RecordObj+CoreDataClass.swift"; sourceTree = "<group>"; };
+		84C8C80E200BD73C00572B0E /* RecordObj+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RecordObj+CoreDataProperties.swift"; path = "MemoryCards/RecordObj+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		84DF371B200BE7400073BF19 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
+		84DF371D200C10760073BF19 /* Functionality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functionality.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C8C7E5200B8E1600572B0E /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,8 +59,11 @@
 		8433A2B42004F499007AD790 = {
 			isa = PBXGroup;
 			children = (
+				84C8C80D200BD73C00572B0E /* RecordObj+CoreDataClass.swift */,
+				84C8C80E200BD73C00572B0E /* RecordObj+CoreDataProperties.swift */,
 				8433A2BF2004F499007AD790 /* MemoryCards */,
 				8433A2BE2004F499007AD790 /* Products */,
+				84C8C7E3200B8DD800572B0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,9 +78,14 @@
 		8433A2BF2004F499007AD790 /* MemoryCards */ = {
 			isa = PBXGroup;
 			children = (
+				84C8C80B200BA51100572B0E /* RecordsViewController.swift */,
+				84C8C807200B905100572B0E /* DataController.swift */,
 				8433A2D220055F26007AD790 /* CardsViewController.swift */,
+				84DF371D200C10760073BF19 /* Functionality.swift */,
+				84C8C7E0200B8B5200572B0E /* RecordsDataBase.xcdatamodeld */,
 				8433A2D4200567DE007AD790 /* CollectionViewCell.swift */,
 				8433A2C22004F499007AD790 /* ViewController.swift */,
+				84DF371B200BE7400073BF19 /* RecordTableViewCell.swift */,
 				8433A2C42004F499007AD790 /* Main.storyboard */,
 				8433A2C72004F499007AD790 /* Assets.xcassets */,
 				8433A2CC2004F499007AD790 /* Info.plist */,
@@ -76,6 +101,14 @@
 				8433A2C92004F499007AD790 /* LaunchScreen.storyboard */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		84C8C7E3200B8DD800572B0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84C8C7E4200B8DD800572B0E /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,10 +183,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C8C7E2200B8B5200572B0E /* RecordsDataBase.xcdatamodeld in Sources */,
+				84C8C808200B905100572B0E /* DataController.swift in Sources */,
 				8433A2C32004F499007AD790 /* ViewController.swift in Sources */,
+				84C8C80F200BD73C00572B0E /* RecordObj+CoreDataClass.swift in Sources */,
+				84C8C810200BD73C00572B0E /* RecordObj+CoreDataProperties.swift in Sources */,
 				8433A2C12004F499007AD790 /* AppDelegate.swift in Sources */,
 				8433A2D5200567DE007AD790 /* CollectionViewCell.swift in Sources */,
+				84DF371E200C10760073BF19 /* Functionality.swift in Sources */,
 				8433A2D320055F26007AD790 /* CardsViewController.swift in Sources */,
+				84C8C80C200BA51100572B0E /* RecordsViewController.swift in Sources */,
+				84DF371C200BE7400073BF19 /* RecordTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +267,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -278,7 +318,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -293,7 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LDWUKS5K42;
 				INFOPLIST_FILE = MemoryCards/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TestProject.MemoryCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -309,7 +349,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LDWUKS5K42;
 				INFOPLIST_FILE = MemoryCards/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TestProject.MemoryCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -340,6 +380,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84C8C7E0200B8B5200572B0E /* RecordsDataBase.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84C8C7E1200B8B5200572B0E /* RecordsDataBase.xcdatamodel */,
+			);
+			currentVersion = 84C8C7E1200B8B5200572B0E /* RecordsDataBase.xcdatamodel */;
+			path = RecordsDataBase.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8433A2B52004F499007AD790 /* Project object */;
 }

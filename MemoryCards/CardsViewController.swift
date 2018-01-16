@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CardsViewController: UIViewController {
     @IBOutlet weak var cardsCollectionView: UICollectionView!
@@ -25,6 +26,7 @@ class CardsViewController: UIViewController {
     var prevCardInfo = (index: -1, number: -1)
     var firstCardSelected = false
     let color = ["red" : UIColor(red:1.00, green:0.12, blue:0.00, alpha:0.5), "green" : UIColor(red:0.80, green:1.00, blue:0.00, alpha:0.5)]
+    var alert = UIAlertController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,25 +38,58 @@ class CardsViewController: UIViewController {
     
     @objc func updateTimer() {
         timeElapsed += 0.1
-        timeLabel.text = "\(round(10*timeElapsed)/10)"
+        timeLabel.text = "\(timeElapsed.roundTo(to: 10))"
     }
     
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,   selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
     }
     func showFinalSlert(flips: Int, time: String) {
-        let alert = UIAlertController(title: "Congratulations!\nYour results are:", message: "Flips: \(flips)\nTime spent: \(time)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Back to main menu"), style: .`default`, handler: { _ in
+        alert = UIAlertController(title: "Congratulations!\nYour results are:", message: "Flips: \(flips)\nTime spent: \(time)\nType your name and OK to save results to Records Table", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: {(_ textField: UITextField) -> Void in
+            textField.placeholder = "Name (min 3 symbols)"
+            textField.delegate = self
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+            print("Canelled")
+        })
+        alert.addAction(cancelAction)
+        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Back to main menu"), style: .`default`, handler: { _ in
             self.goBack()
-        }))
+        })
+        alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
     func goBack() {
+        saveRecord(username: alert.textFields![0].text!, flips: flipsCounter, time: timeElapsed, numberOfCards: numberOfCards)
         navigationController?.popViewController(animated: true)
+    }
+    
+    func saveRecord(username: String, flips: Int, time: Double, numberOfCards: Int) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Record", in: context)
+        let newRecord = NSManagedObject(entity: entity!, insertInto: context)
+        let flipsNSNumber = NSNumber(value: flips)
+        newRecord.setValue(username, forKey: "username")
+        newRecord.setValue(flipsNSNumber, forKey: "flips")
+        newRecord.setValue(time, forKey: "time")
+        newRecord.setValue(numberOfCards, forKey: "numberOfCards")
+        appDelegate.saveContext()
     }
 }
 
-extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        if (newLength > 2) {
+            self.alert.actions[1].isEnabled = true
+        }else{
+            self.alert.actions[1].isEnabled = false
+        }
+        return true
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfCards
     }
@@ -99,9 +134,9 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
                         }
                     }
             } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
-                    UIView.transition(with: cell, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
-                    UIView.transition(with: cell2, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    UIView.transition(with: cell, duration: 0.5, options: .transitionFlipFromRight, animations: nil, completion: nil)
+                    UIView.transition(with: cell2, duration: 0.5, options: .transitionFlipFromRight, animations: nil, completion: nil)
                     cell.isFlipped = false
                     cell2.isFlipped = false
                 })

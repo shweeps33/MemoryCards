@@ -8,6 +8,7 @@
 
 import UIKit
 import GameplayKit
+import CoreData
 
 class ViewController: UIViewController {
     @IBOutlet weak var numberPicker: UIPickerView!
@@ -23,6 +24,8 @@ class ViewController: UIViewController {
         cardsVC.arrayOfNumbers = array.shuffle()
         navigationController?.pushViewController(cardsVC, animated: true)
     }
+    
+    
     let baseNumber = 6
     var selectedNumber = Int()
     
@@ -33,6 +36,8 @@ class ViewController: UIViewController {
         
         selectedNumber = baseNumber
     }
+    
+    
 }
 
 extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
