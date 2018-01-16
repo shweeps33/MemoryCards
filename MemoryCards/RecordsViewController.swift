@@ -22,15 +22,15 @@ class RecordsViewController: UIViewController, NSFetchedResultsControllerDelegat
     func initializeFetchedResultsController() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let departmentSort = NSSortDescriptor(key: "flips", ascending: true)
-        let lastNameSort = NSSortDescriptor(key: "time", ascending: true)
+        let cardsNumberSort = NSSortDescriptor(key: "cardsNumber", ascending: true)
+        let timeSort = NSSortDescriptor(key: "time", ascending: true)
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Record")
         let filter = 11
         request.predicate = NSPredicate(format: "flips < \(filter)")
-        request.sortDescriptors = [departmentSort, lastNameSort]
+        request.sortDescriptors = [cardsNumberSort, timeSort]
         
         
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "cardsNumber", cacheName: nil)
         fetchedResultsController.delegate = self
         
         

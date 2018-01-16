@@ -45,14 +45,14 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 15
+        return 4
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        selectedNumber = baseNumber+row*2
+        selectedNumber = baseNumber+row*5
         return "\(selectedNumber)"
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedNumber = baseNumber+row*2
+        selectedNumber = baseNumber+row*6
     }
 }
 extension Array {
