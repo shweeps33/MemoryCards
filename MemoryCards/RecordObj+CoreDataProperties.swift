@@ -20,6 +20,6 @@ extension RecordObj {
     @NSManaged public var username: String?
     @NSManaged public var flips: Int32
     @NSManaged public var time: Double
-    @NSManaged public var numberOfCards: Int32
+    @NSManaged public var cardsNumber: Int32
 
 }

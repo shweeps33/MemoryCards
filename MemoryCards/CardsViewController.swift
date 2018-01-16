@@ -74,7 +74,7 @@ class CardsViewController: UIViewController {
         newRecord.setValue(username, forKey: "username")
         newRecord.setValue(flipsNSNumber, forKey: "flips")
         newRecord.setValue(time, forKey: "time")
-        newRecord.setValue(numberOfCards, forKey: "numberOfCards")
+        newRecord.setValue(numberOfCards, forKey: "cardsNumber")
         appDelegate.saveContext()
     }
 }
