@@ -12,6 +12,7 @@ import CoreData
 class RecordsViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
+    var secArray = [["test1", "test2", "test3"], ["test1", "test2-2", "test3-2"], ["test1-3", "test2-3", "test3-3"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +23,11 @@ class RecordsViewController: UIViewController, NSFetchedResultsControllerDelegat
     func initializeFetchedResultsController() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Record")
         let cardsNumberSort = NSSortDescriptor(key: "cardsNumber", ascending: true)
         let timeSort = NSSortDescriptor(key: "time", ascending: true)
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Record")
-        let filter = 11
-        request.predicate = NSPredicate(format: "flips < \(filter)")
-        request.sortDescriptors = [cardsNumberSort, timeSort]
         
+        request.sortDescriptors = [cardsNumberSort, timeSort]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "cardsNumber", cacheName: nil)
         fetchedResultsController.delegate = self
@@ -36,7 +35,6 @@ class RecordsViewController: UIViewController, NSFetchedResultsControllerDelegat
         
         do {
             try fetchedResultsController.performFetch()
-            print(fetchedResultsController.sections?.count)
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
@@ -47,61 +45,27 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
+        
+        return 0
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        let results = fetchedResultsController.sections?[section].numberOfObjects ?? 0
-        switch section {
-        case 0 :
-            if results > 5 {
-                return 5
-            } else {
-                return results
-            }
-        case 1:
-            if results > 5 {
-                return 5
-            } else {
-                return results
-            }
-        case 2:
-            if results > 5 {
-                return 5
-            } else {
-                return results
-            }
-        case 3:
-            if results > 5 {
-                return 5
-            } else {
-                return results
-            }
-        default:
-            if results > 5 {
-                return 5
-            } else {
-                return results
-            }
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let sections = fetchedResultsController.sections {
+            let currentSection = sections[section]
+            return currentSection.numberOfObjects
         }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! RecordTableViewCell
+        let record = fetchedResultsController.object(at: indexPath) as! RecordObj
         
-        guard let sections = fetchedResultsController.sections else {
-            fatalError("Sections missing")
-        }
-        
-        let section = sections[indexPath.section]
-        guard let itemsInSection = section.objects as? [RecordObj] else {
-            fatalError("Items missing")
-        }
-        
-        let record = itemsInSection[indexPath.row]
         let userID = Double(record.flips) * record.time.roundTo(to: 100) * 10
         let username = "\(record.username!).\(userID)"
         cell.userLabel.text = username
@@ -109,5 +73,10 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.timeLabel.text = String(record.time.roundTo(to: 100))
         
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let cardsNumber = 6+section*4
+        return "Records for \(cardsNumber) cards"
     }
 }

@@ -15,6 +15,7 @@ class CardsViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     
     var numberOfCards = Int()
+    var nuuumber = 0
     var arrayOfNumbers = [Int]()
     var flipsCounter = 0 {
         didSet {
@@ -32,7 +33,7 @@ class CardsViewController: UIViewController {
         super.viewDidLoad()
         cardsCollectionView.delegate = self
         cardsCollectionView.dataSource = self
-        
+        nuuumber = numberOfCards
         runTimer()
     }
     
@@ -61,7 +62,7 @@ class CardsViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     func goBack() {
-        saveRecord(username: alert.textFields![0].text!, flips: flipsCounter, time: timeElapsed, numberOfCards: numberOfCards)
+        saveRecord(username: alert.textFields![0].text!, flips: flipsCounter, time: timeElapsed, numberOfCards: nuuumber)
         navigationController?.popViewController(animated: true)
     }
     
