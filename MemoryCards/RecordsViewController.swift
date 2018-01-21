@@ -47,7 +47,7 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         if let sections = fetchedResultsController.sections {
-            return sections.count
+            return 4
         }
         
         return 0

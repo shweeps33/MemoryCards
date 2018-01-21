@@ -21,7 +21,7 @@ class ViewController: UIViewController {
             array.append(i+1)
         }
         array += array
-        cardsVC.arrayOfNumbers = array
+        cardsVC.arrayOfNumbers = array.shuffle()
         navigationController?.pushViewController(cardsVC, animated: true)
     }
     
@@ -49,10 +49,6 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 4
     }
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        selectedNumber = baseNumber+row*4
-//        return "\(levelNames[row]) '('\(selectedNumber) cards')'"
-//    }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedNumber = baseNumber+row*4
     }

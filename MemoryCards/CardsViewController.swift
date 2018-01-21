@@ -153,14 +153,22 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if numberOfCards <= 12 {
-            return CGSize.init(width: self.view.frame.width/3-16, height: self.view.frame.width/3-16)
-        }
-        else if numberOfCards <= 24 {
-            return CGSize.init(width: self.view.frame.width/4-14, height: self.view.frame.width/4-14)
+        let deviceFrame = self.view.frame
+        var minSize = CGFloat()
+        if deviceFrame.width > deviceFrame.height {
+            minSize = deviceFrame.height
         }
         else {
-            return CGSize.init(width: self.view.frame.width/5-12, height: self.view.frame.width/5-12)
+            minSize = deviceFrame.width
+        }
+        if numberOfCards <= 12 {
+            return CGSize.init(width: minSize/3-16, height: minSize/3-16)
+        }
+        else if numberOfCards <= 24 {
+            return CGSize.init(width: minSize/4-14, height: minSize/4-14)
+        }
+        else {
+            return CGSize.init(width: minSize/5-12, height: minSize/5-12)
         }
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
