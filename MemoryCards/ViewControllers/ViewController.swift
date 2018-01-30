@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     
     let baseNumber = 6
     var selectedNumber = Int()
-    let levelNames = [("Easy", 6), ("Medium", 10), ("Hard", 14), ("Expert", 18)]
+    
     let pickerColors = [UIColor(red:0.39, green:0.93, blue:0.20, alpha:1.0), UIColor(red:0.80, green:0.85, blue:0.20, alpha:1.0), UIColor(red:0.85, green:0.67, blue:0.20, alpha:1.0), UIColor(red:0.85, green:0.39, blue:0.20, alpha:1.0)]
     
     override func viewDidLoad() {

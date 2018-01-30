@@ -38,8 +38,8 @@
 		84C8C7E4200B8DD800572B0E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		84C8C807200B905100572B0E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		84C8C80B200BA51100572B0E /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
-		84C8C80D200BD73C00572B0E /* RecordObj+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RecordObj+CoreDataClass.swift"; path = "MemoryCards/RecordObj+CoreDataClass.swift"; sourceTree = "<group>"; };
-		84C8C80E200BD73C00572B0E /* RecordObj+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RecordObj+CoreDataProperties.swift"; path = "MemoryCards/RecordObj+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		84C8C80D200BD73C00572B0E /* RecordObj+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecordObj+CoreDataClass.swift"; sourceTree = "<group>"; };
+		84C8C80E200BD73C00572B0E /* RecordObj+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecordObj+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		84DF371B200BE7400073BF19 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		84DF371D200C10760073BF19 /* Functionality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functionality.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,8 +59,6 @@
 		8433A2B42004F499007AD790 = {
 			isa = PBXGroup;
 			children = (
-				84C8C80D200BD73C00572B0E /* RecordObj+CoreDataClass.swift */,
-				84C8C80E200BD73C00572B0E /* RecordObj+CoreDataProperties.swift */,
 				8433A2BF2004F499007AD790 /* MemoryCards */,
 				8433A2BE2004F499007AD790 /* Products */,
 				84C8C7E3200B8DD800572B0E /* Frameworks */,
@@ -78,16 +76,11 @@
 		8433A2BF2004F499007AD790 /* MemoryCards */ = {
 			isa = PBXGroup;
 			children = (
-				84C8C80B200BA51100572B0E /* RecordsViewController.swift */,
-				84C8C807200B905100572B0E /* DataController.swift */,
-				8433A2D220055F26007AD790 /* CardsViewController.swift */,
+				84E0748E20210B29005581B0 /* ViewControllers */,
+				84E0748D20210AF2005581B0 /* Cells */,
+				84E0748F20210B60005581B0 /* DataBase */,
 				84DF371D200C10760073BF19 /* Functionality.swift */,
-				84C8C7E0200B8B5200572B0E /* RecordsDataBase.xcdatamodeld */,
-				8433A2D4200567DE007AD790 /* CollectionViewCell.swift */,
-				8433A2C22004F499007AD790 /* ViewController.swift */,
-				84DF371B200BE7400073BF19 /* RecordTableViewCell.swift */,
 				8433A2C42004F499007AD790 /* Main.storyboard */,
-				8433A2C72004F499007AD790 /* Assets.xcassets */,
 				8433A2CC2004F499007AD790 /* Info.plist */,
 				844D429F2006C9F400744F1F /* Resource */,
 			);
@@ -97,6 +90,7 @@
 		844D429F2006C9F400744F1F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				8433A2C72004F499007AD790 /* Assets.xcassets */,
 				8433A2C02004F499007AD790 /* AppDelegate.swift */,
 				8433A2C92004F499007AD790 /* LaunchScreen.storyboard */,
 			);
@@ -109,6 +103,36 @@
 				84C8C7E4200B8DD800572B0E /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84E0748D20210AF2005581B0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8433A2D4200567DE007AD790 /* CollectionViewCell.swift */,
+				84DF371B200BE7400073BF19 /* RecordTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		84E0748E20210B29005581B0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8433A2C22004F499007AD790 /* ViewController.swift */,
+				84C8C80B200BA51100572B0E /* RecordsViewController.swift */,
+				8433A2D220055F26007AD790 /* CardsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		84E0748F20210B60005581B0 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				84C8C80D200BD73C00572B0E /* RecordObj+CoreDataClass.swift */,
+				84C8C80E200BD73C00572B0E /* RecordObj+CoreDataProperties.swift */,
+				84C8C807200B905100572B0E /* DataController.swift */,
+				84C8C7E0200B8B5200572B0E /* RecordsDataBase.xcdatamodeld */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
