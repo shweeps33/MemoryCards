@@ -14,9 +14,7 @@ class CardsViewController: UIViewController {
     @IBOutlet weak var flipsLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
-    var xxxxx = 0
     var numberOfCards = Int()
-    var nuuumber = 0
     var arrayOfNumbers = [Int]()
     var flipsCounter = 0 {
         didSet {
@@ -29,12 +27,20 @@ class CardsViewController: UIViewController {
     var firstCardSelected = false
     let color = ["red" : UIColor(red:1.00, green:0.12, blue:0.00, alpha:0.5), "green" : UIColor(red:0.80, green:1.00, blue:0.00, alpha:0.5)]
     var alert = UIAlertController()
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(self.startNewGame(_:)),
+                                 for: UIControlEvents.valueChanged)
+        refreshControl.tintColor = UIColor.lightGray
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cardsCollectionView.delegate = self
         cardsCollectionView.dataSource = self
-        nuuumber = numberOfCards
+        cardsCollectionView.refreshControl = refreshControl
         runTimer()
     }
     
@@ -45,6 +51,15 @@ class CardsViewController: UIViewController {
     
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,   selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
+    }
+    @objc func startNewGame (_ refreshControl: UIRefreshControl) {
+        numberOfCards = arrayOfNumbers.count
+        arrayOfNumbers = arrayOfNumbers.shuffle()
+        cardsCollectionView.reloadData()
+        flipsCounter = 0
+        self.timer?.invalidate()
+        refreshControl.endRefreshing()
+        runTimer()
     }
     func showFinalSlert(flips: Int, time: String) {
         alert = UIAlertController(title: "Congratulations!\nYour results are:", message: "Flips: \(flips)\nTime spent: \(time)\nType your name and OK to save results to Records Table", preferredStyle: .alert)
@@ -63,7 +78,7 @@ class CardsViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     func goBack() {
-        saveRecord(username: alert.textFields![0].text!, flips: flipsCounter, time: timeElapsed, numberOfCards: nuuumber)
+        saveRecord(username: alert.textFields![0].text!, flips: flipsCounter, time: timeElapsed, numberOfCards: arrayOfNumbers.count)
         navigationController?.popViewController(animated: true)
     }
     
@@ -91,6 +106,9 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
             self.alert.actions[1].isEnabled = false
         }
         return true
+    }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfCards
@@ -151,7 +169,7 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return 4.0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 1.0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let deviceFrame = self.view.frame
@@ -171,8 +189,5 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         else {
             return CGSize.init(width: minSize/5-12, height: minSize/5-12)
         }
-    }
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
     }
 }

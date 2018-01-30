@@ -25,18 +25,14 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(cardsVC, animated: true)
     }
     
-    
-    let baseNumber = 6
     var selectedNumber = Int()
-    
     let pickerColors = [UIColor(red:0.39, green:0.93, blue:0.20, alpha:1.0), UIColor(red:0.80, green:0.85, blue:0.20, alpha:1.0), UIColor(red:0.85, green:0.67, blue:0.20, alpha:1.0), UIColor(red:0.85, green:0.39, blue:0.20, alpha:1.0)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         numberPicker.dataSource = self
         numberPicker.delegate = self
-        
-        selectedNumber = baseNumber
+        selectedNumber = levelNames[0].1
     }
     
     
@@ -50,7 +46,7 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         return 4
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedNumber = baseNumber+row*4
+        selectedNumber = levelNames[row].1
     }
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
@@ -65,15 +61,6 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 40
-    }
-}
-extension Array {
-    mutating func shuffle() -> Array {
-        for i in 0 ..< (count - 1) {
-            let j = Int(arc4random_uniform(UInt32(count - i))) + i
-            swapAt(i, j)
-        }
-        return self
     }
 }
 

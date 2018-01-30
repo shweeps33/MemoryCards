@@ -59,7 +59,6 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let cardsNumber = 6+section*4
         return "Records for \(levelNames[section].1) cards"
     }
 }
