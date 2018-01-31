@@ -8,10 +8,11 @@
 
 import Foundation
 
-public let levelNames = [("Easy", 8), ("Medium", 14), ("Hard", 22), ("Expert", 32)]
+public let levelNames = ["Baby", "Easy", "Medium", "Hard", "Expert"]
+public let levelNumbers = [4, 8, 14, 20, 32]
 
 extension Double {
-    mutating func roundTo(to: Double) -> Double {
+    mutating func round(to: Double) -> Double {
         return Darwin.round(to * self)/to
     }
 }

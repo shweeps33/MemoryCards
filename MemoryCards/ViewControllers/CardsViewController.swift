@@ -22,7 +22,11 @@ class CardsViewController: UIViewController {
         }
     }
     var timer : Timer? = nil
-    var timeElapsed = 0.0
+    var timeElapsed = 0.0 {
+        didSet {
+            timeLabel.text = "\(timeElapsed)"
+        }
+    }
     var prevCardInfo = (index: -1, number: -1)
     var firstCardSelected = false
     let color = ["red" : UIColor(red:1.00, green:0.12, blue:0.00, alpha:0.5), "green" : UIColor(red:0.80, green:1.00, blue:0.00, alpha:0.5)]
@@ -45,22 +49,29 @@ class CardsViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        timeElapsed += 0.1
-        timeLabel.text = "\(timeElapsed.roundTo(to: 10))"
+        timeElapsed = timeElapsed.round(to: 100) + 0.1
+        
     }
     
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,   selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
     }
+    func resetTimer() {
+        self.timer?.invalidate()
+        timeElapsed = 0.0
+        runTimer()
+    }
     @objc func startNewGame (_ refreshControl: UIRefreshControl) {
+        refreshControl.attributedTitle = NSAttributedString(string: "Starting new game...")
         numberOfCards = arrayOfNumbers.count
         arrayOfNumbers = arrayOfNumbers.shuffle()
         cardsCollectionView.reloadData()
         flipsCounter = 0
-        self.timer?.invalidate()
+        resetTimer()
         refreshControl.endRefreshing()
-        runTimer()
+        firstCardSelected = false
     }
+    
     func showFinalSlert(flips: Int, time: String) {
         alert = UIAlertController(title: "Congratulations!\nYour results are:", message: "Flips: \(flips)\nTime spent: \(time)\nType your name and OK to save results to Records Table", preferredStyle: .alert)
         alert.addTextField(configurationHandler: {(_ textField: UITextField) -> Void in
@@ -124,14 +135,14 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         cell.isFlipped = true
         if !firstCardSelected {
-            UIView.transition(with: cell, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            cell.makeFlip()
             flipsCounter += 1
             firstCardSelected = true
             prevCardInfo.index = indexPath.item
             prevCardInfo.number = Int(cell.labelForNumber.text!)!
         }
         else if (indexPath.item != prevCardInfo.index) {
-            UIView.transition(with: cell, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            cell.makeFlip()
             flipsCounter += 1
             let number = Int(cell.labelForNumber.text!)
             let cell2 = collectionView.cellForItem(at: IndexPath(row: self.prevCardInfo.index, section: 0)) as! CollectionViewCell
@@ -155,8 +166,8 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
                     }
             } else {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                    UIView.transition(with: cell, duration: 0.5, options: .transitionFlipFromRight, animations: nil, completion: nil)
-                    UIView.transition(with: cell2, duration: 0.5, options: .transitionFlipFromRight, animations: nil, completion: nil)
+                    cell.makeFlip()
+                    cell2.makeFlip()
                     cell.isFlipped = false
                     cell2.isFlipped = false
                 })

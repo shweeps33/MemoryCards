@@ -15,6 +15,9 @@ class CollectionViewCell: UICollectionViewCell {
             changeCardState()
         }
     }
+    func makeFlip(){
+        UIView.transition(with: self, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+    }
     func changeCardState() {
         if self.isFlipped {
             labelForNumber.isHidden = false

@@ -26,6 +26,7 @@ class RecordsViewController: UIViewController, NSFetchedResultsControllerDelegat
         let cardsNumberSort = NSSortDescriptor(key: "cardsNumber", ascending: true)
         let timeSort = NSSortDescriptor(key: "time", ascending: true)
         request.sortDescriptors = [cardsNumberSort, timeSort]
+        request.predicate = NSPredicate(format: "cardsNumber IN %@", levelNumbers)
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "cardsNumber", cacheName: nil)
         fetchedResultsController.delegate = self
         do {
@@ -42,7 +43,11 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return (fetchedResultsController.sections?.count)!
+        if (fetchedResultsController.sections?.count)! > levelNames.count {
+            return levelNames.count
+        } else {
+            return (fetchedResultsController.sections?.count)!
+        }
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,14 +56,15 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! RecordTableViewCell
+        //let indexPt = IndexPath(row: indexPath.row, section: levelNames[indexPath.section].1)
         let record = fetchedResultsController.object(at: indexPath) as! RecordObj
-        cell.userLabel.text = record.username
-        cell.flipsLabel.text = String(record.flips)
-        cell.timeLabel.text = String(record.time.roundTo(to: 100))
+            cell.userLabel.text = record.username
+            cell.flipsLabel.text = String(record.flips)
+            cell.timeLabel.text = String(record.time.round(to: 100))
         return cell
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Records for \(levelNames[section].1) cards"
+        return "Records for \(levelNumbers[section]) cards"
     }
 }

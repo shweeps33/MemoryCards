@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         numberPicker.dataSource = self
         numberPicker.delegate = self
-        selectedNumber = levelNames[0].1
+        selectedNumber = levelNumbers[0]
     }
     
     
@@ -43,15 +43,15 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 4
+        return levelNumbers.count
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedNumber = levelNames[row].1
+        selectedNumber = levelNumbers[row]
     }
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
-        let myTitle = levelNames[row].0 + "(\(levelNames[row].1) cards)"
-        pickerLabel.backgroundColor = pickerColors[row]
+        let myTitle = levelNames[row] + "(\(levelNumbers[row]) cards)"
+        //pickerLabel.backgroundColor = pickerColors[row]
         pickerLabel.text = myTitle
         pickerLabel.textAlignment = .center
         return pickerLabel
