@@ -8,8 +8,8 @@
 
 import Foundation
 
-public let levelNames = ["Baby", "Easy", "Medium", "Hard", "Expert"]
-public let levelNumbers = [4, 8, 14, 20, 32]
+public let levelNames = ["Easy", "Medium", "Hard", "Expert"]
+public let levelNumbers = [8, 14, 20, 32]
 
 extension Double {
     mutating func round(to: Double) -> Double {

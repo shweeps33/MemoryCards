@@ -51,7 +51,7 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
         let myTitle = levelNames[row] + "(\(levelNumbers[row]) cards)"
-        //pickerLabel.backgroundColor = pickerColors[row]
+        pickerLabel.backgroundColor = pickerColors[row]
         pickerLabel.text = myTitle
         pickerLabel.textAlignment = .center
         return pickerLabel
@@ -60,7 +60,7 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         return 180
     }
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 40
+        return 50
     }
 }
 
