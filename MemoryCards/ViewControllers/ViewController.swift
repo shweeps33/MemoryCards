@@ -11,6 +11,7 @@ import GameplayKit
 import CoreData
 
 class ViewController: UIViewController {
+    @IBOutlet weak var choseLavelText: UILabel!
     @IBOutlet weak var numberPicker: UIPickerView!
     @IBAction func startButton(_ sender: UIButton) {
         let cardsVC = storyboard?.instantiateViewController(withIdentifier: "CardsVC") as! CardsViewController
@@ -30,15 +31,23 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBg(self)
+        navigationController?.navigationBar.barTintColor = UIColor.darkGray
+        navigationController?.navigationBar.tintColor = UIColor.darkGray
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         numberPicker.dataSource = self
         numberPicker.delegate = self
         selectedNumber = levelNumbers[0]
     }
-    
-    
 }
 
 extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    override func viewDidLayoutSubviews() {
+        numberPicker.subviews[1].isHidden = true
+        numberPicker.subviews[2].isHidden = true
+    }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

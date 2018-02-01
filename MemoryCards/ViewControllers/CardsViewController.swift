@@ -39,20 +39,18 @@ class CardsViewController: UIViewController {
         refreshControl.tintColor = UIColor.lightGray
         return refreshControl
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBg(self)
         cardsCollectionView.delegate = self
         cardsCollectionView.dataSource = self
         cardsCollectionView.refreshControl = refreshControl
+        cardsCollectionView.backgroundColor = UIColor.clear
         runTimer()
     }
-    
     @objc func updateTimer() {
         timeElapsed = timeElapsed.round(to: 100) + 0.1
-        
     }
-    
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,   selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
     }
@@ -79,7 +77,7 @@ class CardsViewController: UIViewController {
             textField.delegate = self
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
-            print("Canelled")
+            self.goBackWithoutSaving()
         })
         alert.addAction(cancelAction)
         let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Back to main menu"), style: .`default`, handler: { _ in
@@ -92,7 +90,9 @@ class CardsViewController: UIViewController {
         saveRecord(username: alert.textFields![0].text!, flips: flipsCounter, time: timeElapsed, numberOfCards: arrayOfNumbers.count)
         navigationController?.popViewController(animated: true)
     }
-    
+    func goBackWithoutSaving() {
+        navigationController?.popViewController(animated: true)
+    }
     func saveRecord(username: String, flips: Int, time: Double, numberOfCards: Int) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -128,6 +128,9 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as! CollectionViewCell
         cell.labelForNumber.text = String(arrayOfNumbers[indexPath.item])
         cell.isFlipped = false
+        cell.layer.borderWidth = 1.5
+        cell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.cornerRadius = 4
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -174,7 +177,6 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
             }
             firstCardSelected = false
         }
-        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 4.0

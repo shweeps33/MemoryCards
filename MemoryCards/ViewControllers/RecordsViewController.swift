@@ -16,9 +16,7 @@ class RecordsViewController: UIViewController, NSFetchedResultsControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeFetchedResultsController()
-        
     }
-    
     func initializeFetchedResultsController() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -41,7 +39,6 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         if (fetchedResultsController.sections?.count)! > levelNames.count {
             return levelNames.count
@@ -49,11 +46,9 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
             return (fetchedResultsController.sections?.count)!
         }
     }
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections![section].numberOfObjects
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! RecordTableViewCell
         //let indexPt = IndexPath(row: indexPath.row, section: levelNames[indexPath.section].1)
@@ -63,8 +58,7 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.timeLabel.text = String(record.time.round(to: 100))
         return cell
     }
-    
-    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Records for \(levelNumbers[section]) cards"
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "\(levelNumbers[section]) cards"
     }
 }

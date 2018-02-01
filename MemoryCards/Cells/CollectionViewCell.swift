@@ -15,16 +15,23 @@ class CollectionViewCell: UICollectionViewCell {
             changeCardState()
         }
     }
+    let view = UIView()
     func makeFlip(){
         UIView.transition(with: self, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
     func changeCardState() {
         if self.isFlipped {
             labelForNumber.isHidden = false
-            self.backgroundColor = UIColor(red:0.77, green:0.77, blue:0.77, alpha:1.0)
+            view.backgroundColor = UIColor.clear
+            self.backgroundView = view
+            self.backgroundColor = UIColor(red:0.85, green:0.96, blue:0.60, alpha:1.0)
         } else {
             labelForNumber.isHidden = true
-            self.backgroundColor = UIColor(red:0.56, green:0.74, blue:0.87, alpha:1.0)
+            
+            view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "cardsBack"))
+            self.backgroundView = view
+            self.backgroundView?.contentMode = .scaleAspectFit
+            self.backgroundColor = UIColor(red:0.53, green:0.82, blue:0.68, alpha:1.0)
         }
     }
 }
